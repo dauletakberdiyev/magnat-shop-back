@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
+use App\Http\Handlers\Product\FindHandler;
 use App\Http\Handlers\Product\IndexHandler;
 use App\Http\Handlers\Product\ShowHandler;
 use App\Http\Handlers\Product\StoreHandler;
+use App\Http\Requests\Product\FindRequest;
 use App\Http\Requests\Product\StoreRequest;
+use App\Http\Resources\Product\FindResource;
 use App\Http\Resources\Product\IndexResource;
 use App\Http\Resources\Product\ShowResource;
 use App\Http\Resources\Product\StoreResource;
@@ -40,6 +43,16 @@ final class ProductController extends Controller
         return $this->response(
             'Продукт возвращен успешно',
             new ShowResource($handler->handle($product->id))
+        );
+    }
+
+    public function find(FindRequest $request, FindHandler $handler): JsonResponse
+    {
+        $products = $handler->handle($request->getSearch());
+
+        return $this->response(
+            'Продукты возвращены успешно',
+            FindResource::collection($products)
         );
     }
 }
