@@ -12,6 +12,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('products')->name('products-')->group(function () {
         Route::post('', [ProductController::class, 'store'])->name('store');
         Route::get('', [ProductController::class, 'index'])->name('index');
+        Route::get('{product}', [ProductController::class, 'show'])->name('show')->withoutMiddleware('auth:sanctum');
     });
 
     Route::prefix('category')->name('category-')->group(function () {
