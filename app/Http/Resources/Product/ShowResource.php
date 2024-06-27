@@ -20,6 +20,7 @@ final class ShowResource extends JsonResource
             'discount_price' => $this->discount_price,
             'discount_percentage' => $this->discount_percentage,
             'image_url' => $this->image_url,
+            'images' => $this->imageList,
             'is_exist' => $this->is_exist,
             'subcategory' => new SubCategoryResource($this->subCategory),
             'category' => new CategoryResource($this->subCategory?->category)

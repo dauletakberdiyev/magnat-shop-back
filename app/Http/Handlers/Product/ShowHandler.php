@@ -9,11 +9,15 @@ final class ShowHandler
 {
     public function handle(int $productId): Model
     {
-        return Product::query()
+        /** @var Product $product */
+        $product = Product::query()
             ->with([
-                'subCategory.category'
+                'subCategory.category',
+                'images'
             ])
             ->where('id', $productId)
             ->first();
+
+        return $product;
     }
 }
