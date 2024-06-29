@@ -21,7 +21,7 @@ final class AuthController extends Controller
             $user = Auth::user();
 
             return response()->json([
-                'token' => $user->createToken('default')->plainTextToken,
+                'access_token' => $user->createToken('default')->plainTextToken,
                 'data' => new LoginResource($user)
             ]);
         }
