@@ -14,8 +14,8 @@ final class ShowResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title_kz,
-            'description' => $this->description_kz,
+            'title' => $this->title,
+            'description' => $this->description,
             'real_price' => $this->real_price,
             'discount_price' => $this->discount_price,
             'discount_percentage' => $this->discount_percentage,

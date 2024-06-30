@@ -20,7 +20,7 @@ final class MainResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'title' => $this->title_kz,
+            'title' => $this->title,
             'sub_categories' => SubCategoryResource::collection($this->subCategories),
             'products' => ProductVOResource::collection(ProductCollection::make($products)),
         ];

@@ -2,10 +2,14 @@
 
 namespace App\Http\ValueObjects\Category;
 
+use App\Http\Enums\LanguageEnum;
+use App\Http\Traits\LocaleTrait;
 use Illuminate\Support\Arr;
 
 final readonly class ProductVO
 {
+    use LocaleTrait;
+
     public function __construct(
         public int $id,
         public string $title,
@@ -22,8 +26,8 @@ final readonly class ProductVO
     {
         return new self(
             (int) Arr::get($data, 'id'),
-            Arr::get($data, 'title_kz'),
-            Arr::get($data, 'description_kz') ?? null,
+            (self::getLocale() === LanguageEnum::KAZAKH->value) ? Arr::get($data, 'title_kz') : Arr::get($data, 'title_ru'),
+            (self::getLocale() === LanguageEnum::KAZAKH->value) ? Arr::get($data, 'description_kz') : Arr::get($data, 'description_ru'),
             (float) Arr::get($data, 'real_price'),
             (float) Arr::get($data, 'discount_price') ?? null,
             (float) Arr::get($data, 'discount_percentage') ?? null,
@@ -36,8 +40,8 @@ final readonly class ProductVO
     {
         return new self(
             (int) $data->id,
-            $data->title_kz,
-            $data->description_kz ?? null,
+            (self::getLocale() === LanguageEnum::KAZAKH->value) ? $data->title_kz : $data->title_ru,
+            (self::getLocale() === LanguageEnum::KAZAKH->value) ? $data->description_kz : $data->description_ru,
             (float) $data->real_price,
             (float) $data->discount_price ?? null,
             (float) $data->discount_percentage ?? null,

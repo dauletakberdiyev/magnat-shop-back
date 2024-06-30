@@ -15,7 +15,7 @@ final class MenuResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title_kz,
+            'title' => $this->title,
             'subCategories' => SubCategoryResource::collection($this->subCategories)
         ];
     }

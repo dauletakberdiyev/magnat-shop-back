@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Http\Enums\LanguageEnum;
+use App\Http\Traits\LocaleTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -22,12 +24,16 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $image_url
  * @property Carbon $created_at
  * @property Carbon $updated_at
+ * @property-read string|null $title
+ * @property-read string|null $description
  * @property-read array $imageList
  * @property-read SubCategories $subCategory
  * @property-read ProductImage[]|Collection $images
  */
 final class Product extends Model
 {
+    use LocaleTrait;
+
     protected $table = 'products';
     protected $primaryKey = 'id';
     protected $fillable = [
@@ -44,6 +50,22 @@ final class Product extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function getTitleAttribute(?string $language = null): ?string
+    {
+        return match ($language ?? self::getLocale()) {
+            LanguageEnum::RUSSIAN->value => $this->title_ru,
+            default => $this->title_kz,
+        };
+    }
+
+    public function getDescriptionAttribute(?string $language = null): ?string
+    {
+        return match ($language ?? self::getLocale()) {
+            LanguageEnum::RUSSIAN->value => $this->description_ru,
+            default => $this->description_kz,
+        };
+    }
 
     public function getImageListAttribute(): array
     {
