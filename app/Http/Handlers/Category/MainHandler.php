@@ -16,6 +16,6 @@ final readonly class MainHandler
                         ->limit(10);
                 }
             ])
-            ->paginate(2);
+            ->paginate($count);
     }
 }

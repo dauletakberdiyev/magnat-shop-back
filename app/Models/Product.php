@@ -54,7 +54,7 @@ final class Product extends Model
     public function getTitleAttribute(?string $language = null): ?string
     {
         return match ($language ?? self::getLocale()) {
-            LanguageEnum::RUSSIAN->value => $this->title_ru,
+            LanguageEnum::RUSSIAN->value => ($this->title_ru) ? $this->title_ru : $this->title_kz,
             default => $this->title_kz,
         };
     }
@@ -62,7 +62,7 @@ final class Product extends Model
     public function getDescriptionAttribute(?string $language = null): ?string
     {
         return match ($language ?? self::getLocale()) {
-            LanguageEnum::RUSSIAN->value => $this->description_ru,
+            LanguageEnum::RUSSIAN->value => ($this->description_ru) ? $this->description_ru : $this->description_kz,
             default => $this->description_kz,
         };
     }

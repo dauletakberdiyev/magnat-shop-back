@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Locale\LocaleController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\SubCategory\SubCategoryController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('sub-category')->name('sub-category-')->group(function () {
         Route::post('', [SubCategoryController::class, 'store'])->name('store');
         Route::get('{subCategory}', [SubCategoryController::class, 'products'])->whereNumber('subCategory')->name('products')->withoutMiddleware('auth:sanctum');
+    });
+
+    Route::prefix('locale')->name('locale-')->group(function () {
+        Route::post('', [LocaleController::class, 'setLocaleLanguage'])->name('store')->withoutMiddleware('auth:sanctum');
     });
 });
 
