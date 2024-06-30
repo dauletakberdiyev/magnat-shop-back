@@ -47,7 +47,7 @@ final class CategoryController extends Controller
     {
         return $this->response(
             'New category save successfully',
-            new StoreResource($handler->handle($request->getTitleKz(), $request->getTitleRu()))
+            new StoreResource($handler->handle($request->getTitleKz(), $request->getTitleRu(), $request->getSubcategories()))
         );
     }
 

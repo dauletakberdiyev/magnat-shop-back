@@ -19,7 +19,7 @@ final class StoreRequest extends FormRequest
             'real_price' => ['required', 'numeric'],
             'discount_percentage' => ['nullable', 'numeric'],
             'sub_category_id' => ['required', 'integer', new Exists(SubCategories::class, 'id')],
-            'image' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:2048'],
+            'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:2048'],
         ];
     }
 

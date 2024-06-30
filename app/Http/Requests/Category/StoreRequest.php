@@ -10,7 +10,10 @@ final class StoreRequest extends FormRequest
     {
         return [
             'title_kz' => ['required', 'string'],
-            'title_ru' => ['required', 'string'],
+            'title_ru' => ['nullable', 'string'],
+            'subcategories' => ['nullable', 'array'],
+            'subcategories.*.title_kz' => ['required', 'string'],
+            'subcategories.*.title_ru' => ['nullable', 'string'],
         ];
     }
 
@@ -19,8 +22,13 @@ final class StoreRequest extends FormRequest
         return $this->validated('title_kz');
     }
 
-    public function getTitleRu(): string
+    public function getTitleRu(): ?string
     {
         return $this->validated('title_ru');
+    }
+
+    public function getSubcategories(): ?array
+    {
+        return $this->validated('subcategories');
     }
 }

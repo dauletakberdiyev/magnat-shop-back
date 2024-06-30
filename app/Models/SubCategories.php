@@ -26,7 +26,8 @@ final class SubCategories extends Model
     protected $fillable = [
         'title_kz',
         'title_ru',
-        'category_id'
+        'category_id',
+        'image_url'
     ];
 
     public function products(): HasMany
