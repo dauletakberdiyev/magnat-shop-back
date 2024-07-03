@@ -9,10 +9,12 @@ final readonly class MenuHandler
 {
     public function handle(): Collection
     {
-        return Category::query()
+        $categories = Category::query()
             ->with([
-                'subCategories'
+                'subCategories.products'
             ])
             ->get();
+
+        return $categories;
     }
 }
