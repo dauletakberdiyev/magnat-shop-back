@@ -16,7 +16,7 @@ final readonly class StoreDTO
         public ?float $discountPrice,
         public ?float $discountPercentage,
         public int $subCategoryId,
-        public UploadedFile $image,
+        public ?UploadedFile $image,
     ) {
     }
 }

@@ -7,8 +7,13 @@ use App\Http\Handlers\Product\FindHandler;
 use App\Http\Handlers\Product\IndexHandler;
 use App\Http\Handlers\Product\ShowHandler;
 use App\Http\Handlers\Product\StoreHandler;
+use App\Http\Handlers\Product\UpdateHandler;
+use App\Http\Handlers\Product\UpdateIsExistHandler;
 use App\Http\Requests\Product\FindRequest;
 use App\Http\Requests\Product\StoreRequest;
+use App\Http\Requests\Product\UpdateIsExistRequest;
+use App\Http\Requests\Product\UpdateRequest;
+use App\Http\Resources\Category\ProductResource;
 use App\Http\Resources\Product\FindResource;
 use App\Http\Resources\Product\IndexResource;
 use App\Http\Resources\Product\ShowResource;
@@ -53,6 +58,32 @@ final class ProductController extends Controller
         return $this->response(
             'Продукты возвращены успешно',
             FindResource::collection($products)
+        );
+    }
+
+    public function updateIsExist(Product $product, UpdateIsExistRequest $request, UpdateIsExistHandler $handler): JsonResponse
+    {
+        return $this->response(
+            'Продукт успешно изменен',
+            new ProductResource($handler->handle($product, $request->getIsExist()))
+        );
+    }
+
+    public function destroy(Product $product): JsonResponse
+    {
+        $product->delete();
+
+        return $this->response(
+            'Продукт успешно удален',
+            new ProductResource($product)
+        );
+    }
+
+    public function update(Product $product, UpdateRequest $request, UpdateHandler $handler): JsonResponse
+    {
+        return $this->response(
+            'Продукт успешно обновлен',
+            new ProductResource($handler->handle($product, $request->getDto()))
         );
     }
 }

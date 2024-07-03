@@ -12,9 +12,9 @@ final readonly class SubCategoryHandler
     {
         return new SubCategoryDTO(
             $category->id,
-            $category->title_kz,
+            $category->title,
             $subCategory->id,
-            $subCategory->title_kz,
+            $subCategory->title,
             $subCategory->products
         );
     }

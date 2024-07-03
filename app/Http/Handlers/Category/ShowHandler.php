@@ -14,7 +14,7 @@ final readonly class ShowHandler
         $category = Category::query()
             ->where('id', $categoryId)
             ->with([
-                'subcategories.products'
+                'subcategories.products.subCategory'
             ])
             ->first();
 

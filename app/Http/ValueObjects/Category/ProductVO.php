@@ -4,6 +4,7 @@ namespace App\Http\ValueObjects\Category;
 
 use App\Http\Enums\LanguageEnum;
 use App\Http\Traits\LocaleTrait;
+use App\Models\SubCategories;
 use Illuminate\Support\Arr;
 
 final readonly class ProductVO
@@ -19,6 +20,7 @@ final readonly class ProductVO
         public ?int $discountPercentage,
         public bool $isExist,
         public ?string $imageUrl,
+        public SubCategories $subCategory,
     ) {
     }
 
@@ -33,6 +35,7 @@ final readonly class ProductVO
             (float) Arr::get($data, 'discount_percentage') ?? null,
             (bool) Arr::get($data, 'is_exist'),
             Arr::get($data, 'image_url') ?? null,
+            Arr::get($data, 'subCategory'),
         );
     }
 
@@ -47,6 +50,7 @@ final readonly class ProductVO
             (float) $data->discount_percentage ?? null,
             (bool) $data->is_exist,
             $data->image_url ?? null,
+            $data->subCategory,
         );
     }
 }
