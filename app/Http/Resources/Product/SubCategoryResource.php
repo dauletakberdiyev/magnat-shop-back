@@ -12,7 +12,7 @@ final class SubCategoryResource extends JsonResource
 {
     public function toArray($request): array
     {
-        $imageUrl = $this->products[0]->image_url;
+        $imageUrl = $this->products->get(0)?->image_url;
 
         return [
             'id' => $this->id,
