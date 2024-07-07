@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property int $discount_percentage
  * @property bool $is_exist
  * @property int $sub_category_id
+ * @property string $unit
  * @property string $image_url
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -46,6 +47,7 @@ final class Product extends Model
         'discount_percentage',
         'is_exist',
         'sub_category_id',
+        'unit',
         'image_url',
         'created_at',
         'updated_at'

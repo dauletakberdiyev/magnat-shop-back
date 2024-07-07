@@ -21,6 +21,7 @@ final class FindResource extends JsonResource
             'discount_percentage' => $this->discount_percentage,
             'image_url' => $this->image_url,
             'is_exist' => $this->is_exist,
+            'unit' => $this->unit,
         ];
     }
 }

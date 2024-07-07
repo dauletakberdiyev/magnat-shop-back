@@ -20,6 +20,7 @@ final readonly class ProductVO
         public ?int $discountPercentage,
         public bool $isExist,
         public ?string $imageUrl,
+        public string $unit,
         public SubCategories $subCategory,
     ) {
     }
@@ -35,6 +36,7 @@ final readonly class ProductVO
             (float) Arr::get($data, 'discount_percentage') ?? null,
             (bool) Arr::get($data, 'is_exist'),
             Arr::get($data, 'image_url') ?? null,
+            Arr::get($data, 'unit'),
             Arr::get($data, 'subCategory'),
         );
     }
@@ -50,6 +52,7 @@ final readonly class ProductVO
             (float) $data->discount_percentage ?? null,
             (bool) $data->is_exist,
             $data->image_url ?? null,
+            $data->unit,
             $data->subCategory,
         );
     }

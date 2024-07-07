@@ -21,6 +21,7 @@ final class IndexResource extends JsonResource
             'discount_percentage' => $this->discount_percentage,
             'is_exist' => (bool) $this->is_exist,
             'image_url' => $this->image_url,
+            'unit' => $this->unit,
             'sub_category' => new SubCategoryResource($this->subCategory),
         ];
     }

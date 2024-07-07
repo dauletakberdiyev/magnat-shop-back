@@ -19,7 +19,9 @@ final class StoreRequest extends FormRequest
             'real_price' => ['required', 'numeric'],
             'discount_percentage' => ['nullable', 'numeric'],
             'sub_category_id' => ['required', 'integer', new Exists(SubCategories::class, 'id')],
+            'unit' => ['required', 'string'],
             'image' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:2048'],
+            'images' => ['required', 'array'],
         ];
     }
 
@@ -34,7 +36,9 @@ final class StoreRequest extends FormRequest
             (float) $this->validated('discount_price'),
             (float) $this->validated('discount_percentage'),
             (int) $this->validated('sub_category_id'),
+            $this->validated('unit'),
             $this->file('image'),
+            $this->validated('images'),
         );
     }
 }

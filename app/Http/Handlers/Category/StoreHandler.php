@@ -28,6 +28,9 @@ final readonly class StoreHandler
                     if($subCategory['title_ru']) $newSubCategory->title_ru = $subCategory['title_ru'];
                     $newSubCategory->category_id = $newCategory->id;
 
+                    $imagePath = $subCategory['image']->store('images', 'public');
+                    $newSubCategory->image_url = $imagePath;
+
                     $newSubCategory->save();
                 }
             }

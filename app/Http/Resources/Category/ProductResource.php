@@ -20,6 +20,7 @@ final class ProductResource extends JsonResource
             'discount_price' => $this->discount_price,
             'discount_percentage' => $this->discount_percentage,
             'is_exist' => (bool) $this->is_exist,
+            'unit' => $this->unit,
             'image_url' => $this->image_url,
         ];
     }

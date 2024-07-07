@@ -24,6 +24,7 @@ final readonly class UpdateHandler
                 $product->discount_price = $discountPrice;
             }
             $product->sub_category_id = $dto->subCategoryId;
+            $product->unit = $dto->unit;
 
             if($dto->image)
             {
