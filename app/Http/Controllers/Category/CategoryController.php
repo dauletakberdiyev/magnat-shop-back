@@ -58,4 +58,14 @@ final class CategoryController extends Controller
             MainResource::collection($handler->handle())
         );
     }
+
+    public function destroy(Category $category): JsonResponse
+    {
+        $category->delete();
+
+        return $this->response(
+            'Category deleted successfully',
+            new MenuResource($category)
+        );
+    }
 }
