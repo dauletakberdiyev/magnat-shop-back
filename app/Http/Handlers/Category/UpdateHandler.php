@@ -16,24 +16,26 @@ final readonly class UpdateHandler
             $category->title_kz = $dto->titleKz;
             $category->title_ru = $dto->titleRu;
 
-            foreach ($dto->subcategories as $subcategory) {
-                /** @var SubCategories $thisSubcategory */
-                $thisSubcategory = $category->subcategories()
-                    ->where('id', $subcategory['id'])
-                    ->first();
+            if (isset($dto->subCategories)) {
+                foreach ($dto->subcategories as $subcategory) {
+                    /** @var SubCategories $thisSubcategory */
+                    $thisSubcategory = $category->subcategories()
+                        ->where('id', $subcategory['id'])
+                        ->first();
 
-                $thisSubcategory->update([
-                    'title_kz' => $subcategory['title_kz'],
-                    'title_ru' => $subcategory['title_ru'],
-                ]);
+                    $thisSubcategory->update([
+                        'title_kz' => $subcategory['title_kz'],
+                        'title_ru' => $subcategory['title_ru'],
+                    ]);
 
-                if (isset($subcategory['image']))
-                {
-                    Storage::disk('public')->delete($thisSubcategory->image_url);
+                    if (isset($subcategory['image']))
+                    {
+                        Storage::disk('public')->delete($thisSubcategory->image_url);
 
-                    $imagePath = $subcategory['image']->store('images', 'public');
-                    $thisSubcategory->image_url = $imagePath;
-                    $thisSubcategory->save();
+                        $imagePath = $subcategory['image']->store('images', 'public');
+                        $thisSubcategory->image_url = $imagePath;
+                        $thisSubcategory->save();
+                    }
                 }
             }
 

@@ -7,7 +7,7 @@ final readonly class UpdateDTO
     public function __construct(
         public string $titleKz,
         public string $titleRu,
-        public array $subcategories,
+        public ?array $subcategories,
     ) {
     }
 }
