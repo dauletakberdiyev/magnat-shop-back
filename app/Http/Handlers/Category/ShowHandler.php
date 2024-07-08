@@ -25,6 +25,8 @@ final readonly class ShowHandler
         return new ShowDTO(
             $categoryId,
             $category->title,
+            $category->title_kz,
+            $category->title_ru,
             $category->subCategories,
             ProductCollection::make($products)
         );

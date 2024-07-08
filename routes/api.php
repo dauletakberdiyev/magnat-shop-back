@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('menu', [CategoryController::class, 'menu'])->name('menu')->withoutMiddleware('auth:sanctum');
         Route::get('products', [CategoryController::class, 'products'])->name('products')->withoutMiddleware('auth:sanctum');
         Route::delete('{category}', [CategoryController::class, 'destroy'])->name('destroy')->withoutMiddleware('auth:sanctum');
+        Route::put('{category}', [CategoryController::class, 'update'])->name('update')->withoutMiddleware('auth:sanctum');
     });
 
     Route::prefix('sub-category')->name('sub-category-')->group(function () {

@@ -8,7 +8,9 @@ use App\Http\Handlers\Category\MenuHandler;
 use App\Http\Handlers\Category\ProductsHandler;
 use App\Http\Handlers\Category\ShowHandler;
 use App\Http\Handlers\Category\StoreHandler;
+use App\Http\Handlers\Category\UpdateHandler;
 use App\Http\Requests\Category\StoreRequest;
+use App\Http\Requests\Category\UpdateRequest;
 use App\Http\Resources\Category\CategoryResource;
 use App\Http\Resources\Category\MainResource;
 use App\Http\Resources\Category\MenuResource;
@@ -66,6 +68,14 @@ final class CategoryController extends Controller
         return $this->response(
             'Category deleted successfully',
             new MenuResource($category)
+        );
+    }
+
+    public function update(Category $category, UpdateRequest $request, UpdateHandler $handler): JsonResponse
+    {
+        return $this->response(
+            'Category updated successfully',
+            new MenuResource($handler->handle($category, $request->getDTO()))
         );
     }
 }

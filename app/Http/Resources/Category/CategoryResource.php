@@ -16,6 +16,8 @@ final class CategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'title_kz' => $this->titleKz,
+            'title_ru' => $this->titleRu,
             'sub_categories' => SubCategoryResource::collection($this->subCategories),
             'products' => ProductVOResource::collection($this->products),
         ];

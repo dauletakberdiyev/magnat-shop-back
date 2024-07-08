@@ -10,6 +10,8 @@ final readonly class ShowDTO
     public function __construct(
         public int $id,
         public string $title,
+        public string $titleKz,
+        public string $titleRu,
         public Collection $subCategories,
         public ProductCollection $products
     ) {
