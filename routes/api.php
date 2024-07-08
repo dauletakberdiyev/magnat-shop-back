@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('products', [CategoryController::class, 'products'])->name('products')->withoutMiddleware('auth:sanctum');
         Route::delete('{category}', [CategoryController::class, 'destroy'])->name('destroy')->withoutMiddleware('auth:sanctum');
         Route::post('{category}', [CategoryController::class, 'update'])->name('update')->withoutMiddleware('auth:sanctum');
+        Route::post('{category}/add-subcategory', [CategoryController::class, 'addSubCategory'])->name('addSubCategory')->withoutMiddleware('auth:sanctum');
     });
 
     Route::prefix('sub-category')->name('sub-category-')->group(function () {
