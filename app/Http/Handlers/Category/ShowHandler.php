@@ -2,7 +2,7 @@
 
 namespace App\Http\Handlers\Category;
 
-use App\Http\Controllers\ProductCollection;
+use App\Http\Collections\Category\ProductCollection;
 use App\Http\DTO\Product\ShowDTO;
 use App\Models\Category;
 

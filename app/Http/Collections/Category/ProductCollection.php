@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Collections\Category;
 
 use App\Http\ValueObjects\Category\ProductVO;
 use Illuminate\Support\Collection;

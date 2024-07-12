@@ -2,7 +2,7 @@
 
 namespace App\Http\DTO\Product;
 
-use App\Http\Controllers\ProductCollection;
+use App\Http\Collections\Category\ProductCollection;
 use Illuminate\Database\Eloquent\Collection;
 
 final readonly class ShowDTO
