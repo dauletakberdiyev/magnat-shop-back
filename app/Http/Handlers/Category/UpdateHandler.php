@@ -16,7 +16,8 @@ final readonly class UpdateHandler
             $category->title_kz = $dto->titleKz;
             $category->title_ru = $dto->titleRu;
 
-            if (isset($dto->subCategories)) {
+            if (isset($dto->subcategories)) {
+                var_dump($dto->subcategories);
                 foreach ($dto->subcategories as $subcategory) {
                     /** @var SubCategories $thisSubcategory */
                     $thisSubcategory = $category->subcategories()
@@ -34,8 +35,8 @@ final readonly class UpdateHandler
 
                         $imagePath = $subcategory['image']->store('images', 'public');
                         $thisSubcategory->image_url = $imagePath;
-                        $thisSubcategory->save();
                     }
+                    $thisSubcategory->save();
                 }
             }
 
