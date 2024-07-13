@@ -4,8 +4,10 @@ namespace App\Http\Controllers\QuestionnaireDetails;
 
 use App\Http\Controllers\Controller;
 use App\Http\Handlers\QuestionnaireDetails\CreateHandler;
+use App\Http\Handlers\QuestionnaireDetails\IndexHandler;
 use App\Http\Requests\QuestionnaireDetails\CreateRequest;
 use App\Http\Resources\QuestionnaireDetails\CreateResource;
+use App\Http\Resources\QuestionnaireDetails\IndexResource;
 use App\Models\Questionnaire;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,6 +20,14 @@ final class QuestionnaireDetailsController extends Controller
             'Questionnaire Details successfully created.',
             CreateResource::collection($handler->handle($questionnaire->id, $request->getDTO())),
             Response::HTTP_CREATED
+        );
+    }
+
+    public function index(Questionnaire $questionnaire, IndexHandler $handler): JsonResponse
+    {
+        return $this->response(
+            'Questionnaire Details successfully retrieved.',
+            IndexResource::collection($handler->handle($questionnaire->id))
         );
     }
 }

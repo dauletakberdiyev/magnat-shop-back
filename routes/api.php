@@ -46,6 +46,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
         Route::prefix('{questionnaire}/details')->name('details-')->group(function () {
             Route::post('', [QuestionnaireDetailsController::class, 'create'])->name('create')->withoutMiddleware('auth:sanctum');
+            Route::get('', [QuestionnaireDetailsController::class, 'index'])->name('index')->withoutMiddleware('auth:sanctum');
         });
     });
 
