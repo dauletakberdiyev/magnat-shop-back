@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\QuestionnaireDetails;
 
-use App\Http\DTO\QuestionnaireDetails\CreateDTO;
 use Illuminate\Foundation\Http\FormRequest;
 
 final class CreateRequest extends FormRequest
@@ -10,22 +9,17 @@ final class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title_kz' => ['required', 'string'],
-            'title_ru' => ['nullable', 'string'],
-            'description_kz' => ['required', 'string'],
-            'description_ru' => ['nullable', 'string'],
-            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'details' => ['required', 'array'],
+            'details.*.title_kz' => ['required', 'string'],
+            'details.*.title_ru' => ['nullable', 'string'],
+            'details.*.description_kz' => ['required', 'string'],
+            'details.*.description_ru' => ['nullable', 'string'],
+            'details.*.image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
         ];
     }
 
-    public function getDTO(): CreateDTO
+    public function getDTO(): array
     {
-        return new CreateDTO(
-            $this->validated('title_kz'),
-            $this->validated('title_ru'),
-            $this->validated('description_kz'),
-            $this->validated('description_ru'),
-            $this->validated('image'),
-        );
+        return $this->validated('details');
     }
 }

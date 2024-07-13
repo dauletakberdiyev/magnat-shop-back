@@ -16,7 +16,7 @@ final class QuestionnaireDetailsController extends Controller
     {
         return $this->response(
             'Questionnaire Details successfully created.',
-            new CreateResource($handler->handle($questionnaire->id, $request->getDTO())),
+            CreateResource::collection($handler->handle($questionnaire->id, $request->getDTO())),
             Response::HTTP_CREATED
         );
     }

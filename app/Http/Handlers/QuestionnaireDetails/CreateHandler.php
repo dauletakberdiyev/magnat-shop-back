@@ -2,33 +2,34 @@
 
 namespace App\Http\Handlers\QuestionnaireDetails;
 
-
-use App\Http\DTO\QuestionnaireDetails\CreateDTO;
 use App\Models\QuestionnaireDetail;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
 final readonly class CreateHandler
 {
-    public function handle(int $questionnaireId, CreateDTO $dto): QuestionnaireDetail
+    public function handle(int $questionnaireId, array $dto): Collection
     {
         return DB::transaction(function () use ($questionnaireId, $dto) {
-            $newQuestionnaireDetail = new QuestionnaireDetail();
+            foreach ($dto as $detail) {
+                $newQuestionnaireDetail = new QuestionnaireDetail();
 
-            $newQuestionnaireDetail->questionnaire_id = $questionnaireId;
-            $newQuestionnaireDetail->title_kz = $dto->titleKz;
-            if ($dto->titleRu) $newQuestionnaireDetail->title_ru = $dto->titleRu;
-            $newQuestionnaireDetail->description_kz = $dto->descriptionKz;
-            if ($dto->descriptionRu) $newQuestionnaireDetail->description_ru = $dto->descriptionRu;
+                $newQuestionnaireDetail->questionnaire_id = $questionnaireId;
+                $newQuestionnaireDetail->title_kz = $detail['title_kz'];
+                if ($detail['title_ru']) $newQuestionnaireDetail->title_ru = $detail['title_ru'];
+                $newQuestionnaireDetail->description_kz = $detail['description_kz'];
+                if ($detail['description_ru']) $newQuestionnaireDetail->description_ru = $detail['description_ru'];
 
-            if($dto->image)
-            {
-                $imagePath = $dto->image->store('images', 'public');
-                $newQuestionnaireDetail->image = $imagePath;
+                if(isset($detail['image']))
+                {
+                    $imagePath = $detail['image']->store('images', 'public');
+                    $newQuestionnaireDetail->image = $imagePath;
+                }
+
+                $newQuestionnaireDetail->save();
             }
 
-            $newQuestionnaireDetail->save();
-
-            return $newQuestionnaireDetail;
+            return QuestionnaireDetail::query()->where('questionnaire_id', $questionnaireId)->get();
         });
     }
 }
