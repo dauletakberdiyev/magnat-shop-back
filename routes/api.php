@@ -18,7 +18,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('{product}', [ProductController::class, 'show'])->whereNumber('product')->name('show')->withoutMiddleware('auth:sanctum');
         Route::post('find', [ProductController::class, 'find'])->name('find')->withoutMiddleware('auth:sanctum');
         Route::put('{product}/is-exist', [ProductController::class, 'updateIsExist'])->name('update-is-exist')->withoutMiddleware('auth:sanctum');
-        Route::put('{product}/remove-discount', [ProductController::class, 'updateIsExist'])->name('remove-discount')->withoutMiddleware('auth:sanctum');
+        Route::put('{product}/remove-discount', [ProductController::class, 'removeDiscount'])->name('remove-discount')->withoutMiddleware('auth:sanctum');
         Route::delete('{product}', [ProductController::class, 'destroy'])->name('destroy')->withoutMiddleware('auth:sanctum');
         Route::post('{product}', [ProductController::class, 'update'])->name('update')->withoutMiddleware('auth:sanctum');
     });
