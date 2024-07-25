@@ -5,7 +5,9 @@ namespace App\Http\Controllers\QuestionnaireDetails;
 use App\Http\Controllers\Controller;
 use App\Http\Handlers\QuestionnaireDetails\CreateHandler;
 use App\Http\Handlers\QuestionnaireDetails\IndexHandler;
+use App\Http\Handlers\QuestionnaireDetails\UpdateHandler;
 use App\Http\Requests\QuestionnaireDetails\CreateRequest;
+use App\Http\Requests\QuestionnaireDetails\UpdateRequest;
 use App\Http\Resources\QuestionnaireDetails\CreateResource;
 use App\Http\Resources\QuestionnaireDetails\IndexResource;
 use App\Models\Questionnaire;
@@ -29,5 +31,12 @@ final class QuestionnaireDetailsController extends Controller
             'Questionnaire Details successfully retrieved.',
             IndexResource::collection($handler->handle($questionnaire->id))
         );
+    }
+
+    public function update(Questionnaire $questionnaire, UpdateRequest $request, UpdateHandler $handler): JsonResponse
+    {
+        $handler->handle($questionnaire->id, $request->getDetails());
+
+        return $this->response('Questionnaire Details successfully updated.');
     }
 }

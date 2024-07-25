@@ -11,6 +11,10 @@ final readonly class CreateHandler
     public function handle(int $questionnaireId, array $dto): Collection
     {
         return DB::transaction(function () use ($questionnaireId, $dto) {
+            QuestionnaireDetail::query()
+                ->where('questionnaire_id', $questionnaireId)
+                ->delete();
+
             foreach ($dto as $detail) {
                 $newQuestionnaireDetail = new QuestionnaireDetail();
 
