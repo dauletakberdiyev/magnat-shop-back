@@ -15,6 +15,8 @@ final class IndexResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'title_kz' => $this->title_kz,
+            'title_ru' => $this->title_ru,
         ];
     }
 }

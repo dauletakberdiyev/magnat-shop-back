@@ -14,8 +14,10 @@ final class IndexResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'title' => $this->title,
             'title_kz' => $this->title_kz,
             'title_ru' => $this->title_ru,
+            'description' => $this->description,
             'description_kz' => $this->description_kz,
             'description_ru' => $this->description_ru,
             'questionnaire' => new QuestionnaireResource($this->questionnaire),
