@@ -26,6 +26,7 @@ final class ShowResource extends JsonResource
             'image_url' => $this->image_url,
             'images' => $this->imageList,
             'is_exist' => (bool) $this->is_exist,
+            'unit' => $this->unit,
             'subcategory' => new SubCategoryResource($this->subCategory),
             'category' => new CategoryResource($this->subCategory?->category)
         ];

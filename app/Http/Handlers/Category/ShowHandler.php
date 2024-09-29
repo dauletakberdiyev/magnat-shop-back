@@ -2,7 +2,7 @@
 
 namespace App\Http\Handlers\Category;
 
-use App\Http\Controllers\ProductCollection;
+use App\Http\Collections\Category\ProductCollection;
 use App\Http\DTO\Product\ShowDTO;
 use App\Models\Category;
 
@@ -25,6 +25,8 @@ final readonly class ShowHandler
         return new ShowDTO(
             $categoryId,
             $category->title,
+            $category->title_kz,
+            $category->title_ru,
             $category->subCategories,
             ProductCollection::make($products)
         );

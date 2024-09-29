@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources\Category;
 
-use App\Http\Controllers\ProductCollection;
-use App\Models\Category;
+use App\Http\Collections\Category\ProductCollection;
 use App\Http\Resources\Product\SubCategoryResource;
+use App\Models\Category;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Handlers\Product\FindHandler;
 use App\Http\Handlers\Product\IndexHandler;
+use App\Http\Handlers\Product\RemoveDiscountHandler;
 use App\Http\Handlers\Product\ShowHandler;
 use App\Http\Handlers\Product\StoreHandler;
 use App\Http\Handlers\Product\UpdateHandler;
@@ -66,6 +67,14 @@ final class ProductController extends Controller
         return $this->response(
             'Продукт успешно изменен',
             new ProductResource($handler->handle($product, $request->getIsExist()))
+        );
+    }
+
+    public function removeDiscount(Product $product, RemoveDiscountHandler $handler): JsonResponse
+    {
+        return $this->response(
+            'Product discount removed',
+            new ProductResource($handler->handle($product))
         );
     }
 

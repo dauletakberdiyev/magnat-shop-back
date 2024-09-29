@@ -22,6 +22,7 @@ final class ProductVOResource extends JsonResource
             'discount_percentage' => $this->discountPercentage,
             'is_exist' => $this->isExist,
             'image_url' => $this->imageUrl,
+            'unit' => $this->unit,
             'subcategory' => new SubCategoryResource($this->subCategory)
         ];
     }

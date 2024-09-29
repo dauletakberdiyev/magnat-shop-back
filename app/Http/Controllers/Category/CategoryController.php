@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\Controller;
+use App\Http\Handlers\Category\AddSubCategoryHandler;
 use App\Http\Handlers\Category\MainHandler;
 use App\Http\Handlers\Category\MenuHandler;
 use App\Http\Handlers\Category\ProductsHandler;
 use App\Http\Handlers\Category\ShowHandler;
 use App\Http\Handlers\Category\StoreHandler;
+use App\Http\Handlers\Category\UpdateHandler;
+use App\Http\Requests\Category\AddSubCategoryRequest;
 use App\Http\Requests\Category\StoreRequest;
+use App\Http\Requests\Category\UpdateRequest;
 use App\Http\Resources\Category\CategoryResource;
 use App\Http\Resources\Category\MainResource;
 use App\Http\Resources\Category\MenuResource;
@@ -56,6 +60,34 @@ final class CategoryController extends Controller
         return $this->response(
             'All products returned',
             MainResource::collection($handler->handle())
+        );
+    }
+
+    public function destroy(Category $category): JsonResponse
+    {
+        $category->delete();
+
+        return $this->response(
+            'Category deleted successfully',
+            new MenuResource($category)
+        );
+    }
+
+    public function update(Category $category, UpdateRequest $request, UpdateHandler $handler): JsonResponse
+    {
+        return $this->response(
+            'Category updated successfully',
+            new MenuResource($handler->handle($category, $request->getDTO()))
+        );
+    }
+
+    public function addSubCategory(Category $category, AddSubCategoryRequest $request, AddSubCategoryHandler $handler): JsonResponse
+    {
+        $handler->handle($category, $request->getDTO());
+
+        return $this->response(
+            'Category subcategories returned',
+            []
         );
     }
 }

@@ -22,6 +22,7 @@ final class StoreResource extends JsonResource
             'is_exist' => (bool) $this->is_exist,
             'sub_category_id' => new SubCategoryResource($this->subCategory),
             'image_url' => $this->image_url,
+            'unit' => $this->unit,
         ];
     }
 }
