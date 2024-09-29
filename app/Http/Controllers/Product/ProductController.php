@@ -35,7 +35,7 @@ final class ProductController extends Controller
 
     public function index(IndexHandler $handler): JsonResponse
     {
-        $products = $handler->handle();
+        $products = $handler->handle(true);
 
         return $this->response(
             'Все продукты возвращены',
