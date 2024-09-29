@@ -7,7 +7,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 final readonly class MainHandler
 {
-    public function handle(int $count = 15): LengthAwarePaginator
+    public function handle(bool $caching = false, int $count = 15): LengthAwarePaginator
     {
         return Category::query()
             ->with([

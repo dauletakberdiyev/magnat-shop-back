@@ -19,7 +19,7 @@ final class IndexResource extends JsonResource
             'real_price' => $this->real_price,
             'discount_price' => $this->discount_price,
             'discount_percentage' => $this->discount_percentage,
-            'is_exist' => (bool) $this->is_exist,
+            'is_exist' => $this->is_exist,
             'image_url' => $this->image_url,
             'unit' => $this->unit,
             'sub_category' => new SubCategoryResource($this->subCategory),
