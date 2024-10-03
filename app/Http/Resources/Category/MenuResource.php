@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources\Category;
 
+use App\Http\Resources\Product\SubCategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\Product\SubCategoryResource;
 
 /**
  * @mixin Category
@@ -16,7 +16,7 @@ final class MenuResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'subCategories' => SubCategoryResource::collection($this->subCategories)
+            'subCategories' => SubCategoryResource::collection($this->subCategories),
         ];
     }
 }

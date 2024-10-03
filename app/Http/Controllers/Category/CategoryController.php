@@ -27,7 +27,7 @@ final class CategoryController extends Controller
     {
         return $this->response(
             'All categories returned',
-            new PaginationResource($handler->handle())
+            new PaginationResource($handler->handle(true))
         );
     }
 

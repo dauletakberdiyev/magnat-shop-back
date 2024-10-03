@@ -13,7 +13,7 @@ final class ShowHandler
         $product = Product::query()
             ->with([
                 'subCategory.category',
-                'images'
+                'images',
             ])
             ->where('id', $productId)
             ->first();

@@ -9,7 +9,7 @@ final class UpdateIsExistRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'is_exist' => ['required', 'boolean']
+            'is_exist' => ['required', 'boolean'],
         ];
     }
 

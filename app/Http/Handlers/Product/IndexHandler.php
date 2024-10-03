@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 final readonly class IndexHandler
 {
     private ProductRepositoryInterface $productRepository;
+
     private CacheService $cacheService;
 
     public function __construct(ProductRepositoryInterface $productRepository, CacheService $cacheService)
@@ -19,10 +20,10 @@ final readonly class IndexHandler
 
     public function handle(bool $caching = false): Collection
     {
-        if($caching) {
+        if ($caching) {
             return $this->cacheService->remember(
                 'products',
-                function() {
+                function () {
                     return $this->productRepository->all()->get();
                 }
             );

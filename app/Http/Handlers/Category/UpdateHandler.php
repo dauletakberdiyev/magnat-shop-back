@@ -29,8 +29,7 @@ final readonly class UpdateHandler
                         'title_ru' => $subcategory['title_ru'],
                     ]);
 
-                    if (isset($subcategory['image']))
-                    {
+                    if (isset($subcategory['image'])) {
                         Storage::disk('public')->delete($thisSubcategory->image_url);
 
                         $imagePath = $subcategory['image']->store('images', 'public');

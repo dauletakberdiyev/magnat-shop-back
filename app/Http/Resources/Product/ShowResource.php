@@ -28,7 +28,7 @@ final class ShowResource extends JsonResource
             'is_exist' => (bool) $this->is_exist,
             'unit' => $this->unit,
             'subcategory' => new SubCategoryResource($this->subCategory),
-            'category' => new CategoryResource($this->subCategory?->category)
+            'category' => new CategoryResource($this->subCategory?->category),
         ];
     }
 }

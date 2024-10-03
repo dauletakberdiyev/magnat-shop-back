@@ -15,7 +15,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('products')->name('products-')->group(function () {
         Route::post('', [ProductController::class, 'store'])->name('store');
         Route::get('', [ProductController::class, 'index'])->name('index')->withoutMiddleware('auth:sanctum');
-        Route::get('{product}', [ProductController::class, 'show'])->whereNumber('product')->name('show')->withoutMiddleware('auth:sanctum');;
+        Route::get('{product}', [ProductController::class, 'show'])->whereNumber('product')->name('show')->withoutMiddleware('auth:sanctum');
         Route::post('find', [ProductController::class, 'find'])->name('find');
         Route::put('{product}/is-exist', [ProductController::class, 'updateIsExist'])->name('update');
         Route::put('{product}/remove-discount', [ProductController::class, 'removeDiscount'])->name('remove-discount');
@@ -56,5 +56,3 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('', [LocaleController::class, 'setLocaleLanguage'])->name('store');
     });
 });
-
-

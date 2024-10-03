@@ -2,7 +2,6 @@
 
 namespace App\Http\DTO\Product;
 
-
 use Illuminate\Http\UploadedFile;
 
 final readonly class StoreDTO
@@ -19,6 +18,5 @@ final readonly class StoreDTO
         public string $unit,
         public ?UploadedFile $image,
         public ?array $images,
-    ) {
-    }
+    ) {}
 }

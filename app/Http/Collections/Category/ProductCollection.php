@@ -23,7 +23,7 @@ final class ProductCollection extends Collection
 
     public function add($item): self
     {
-        if ( ! $item instanceof ProductVO) {
+        if (! $item instanceof ProductVO) {
             throw new RuntimeException('Item must be of the type ProductVO');
         }
 

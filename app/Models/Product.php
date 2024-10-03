@@ -36,7 +36,9 @@ final class Product extends Model
     use LocaleTrait;
 
     protected $table = 'products';
+
     protected $primaryKey = 'id';
+
     protected $fillable = [
         'title_kz',
         'title_ru',
@@ -50,7 +52,7 @@ final class Product extends Model
         'unit',
         'image_url',
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
     public function getTitleAttribute(?string $language = null): ?string

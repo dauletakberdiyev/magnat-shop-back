@@ -12,10 +12,10 @@ class LocaleMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->has('language'))
-        {
+        if ($request->has('language')) {
             App::setLocale((string) $request->get('language'));
             $request->setLocale((string) $request->get('language'));
+
             return $next($request);
         }
 

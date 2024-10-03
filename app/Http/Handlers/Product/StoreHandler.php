@@ -15,12 +15,17 @@ final readonly class StoreHandler
         return DB::transaction(function () use ($dto) {
             $product = new Product();
             $product->title_kz = $dto->titleKz;
-            if($dto->titleRu) $product->title_ru = $dto->titleRu;
-            if($dto->descriptionKz) $product->description_kz = $dto->descriptionKz;
-            if($dto->descriptionRu) $product->description_ru = $dto->descriptionRu;
+            if ($dto->titleRu) {
+                $product->title_ru = $dto->titleRu;
+            }
+            if ($dto->descriptionKz) {
+                $product->description_kz = $dto->descriptionKz;
+            }
+            if ($dto->descriptionRu) {
+                $product->description_ru = $dto->descriptionRu;
+            }
             $product->real_price = $dto->realPrice;
-            if($dto->discountPercentage)
-            {
+            if ($dto->discountPercentage) {
                 $product->discount_percentage = $dto->discountPercentage;
 
                 $discountPrice = ($product->real_price * (100 - $dto->discountPercentage)) / 100;
@@ -34,8 +39,7 @@ final readonly class StoreHandler
 
             $product->save();
 
-            foreach ($dto->images as $image)
-            {
+            foreach ($dto->images as $image) {
                 $path = $image->store('images', 'public');
 
                 $newProductImage = new ProductImage();

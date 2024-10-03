@@ -24,14 +24,16 @@ final class SubCategories extends Model
     use LocaleTrait;
 
     protected $table = 'sub_categories';
+
     protected $primaryKey = 'id';
+
     public $timestamps = false;
 
     protected $fillable = [
         'title_kz',
         'title_ru',
         'category_id',
-        'image_url'
+        'image_url',
     ];
 
     public function getTitleAttribute(?string $language = null): ?string

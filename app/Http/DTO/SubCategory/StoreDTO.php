@@ -11,6 +11,5 @@ final readonly class StoreDTO
         public string $titleRu,
         public int $categoryId,
         public UploadedFile $image,
-    ) {
-    }
+    ) {}
 }

@@ -20,12 +20,15 @@ final readonly class CreateHandler
 
                 $newQuestionnaireDetail->questionnaire_id = $questionnaireId;
                 $newQuestionnaireDetail->title_kz = $detail['title_kz'];
-                if ($detail['title_ru']) $newQuestionnaireDetail->title_ru = $detail['title_ru'];
+                if ($detail['title_ru']) {
+                    $newQuestionnaireDetail->title_ru = $detail['title_ru'];
+                }
                 $newQuestionnaireDetail->description_kz = $detail['description_kz'];
-                if ($detail['description_ru']) $newQuestionnaireDetail->description_ru = $detail['description_ru'];
+                if ($detail['description_ru']) {
+                    $newQuestionnaireDetail->description_ru = $detail['description_ru'];
+                }
 
-                if(isset($detail['image']))
-                {
+                if (isset($detail['image'])) {
                     $imagePath = $detail['image']->store('images', 'public');
                     $newQuestionnaireDetail->image = $imagePath;
                 }

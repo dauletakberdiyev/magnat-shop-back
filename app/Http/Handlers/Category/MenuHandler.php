@@ -11,7 +11,7 @@ final readonly class MenuHandler
     {
         $categories = Category::query()
             ->with([
-                'subCategories.products'
+                'subCategories.products',
             ])
             ->get();
 

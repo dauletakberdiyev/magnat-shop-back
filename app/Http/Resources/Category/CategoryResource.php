@@ -3,8 +3,8 @@
 namespace App\Http\Resources\Category;
 
 use App\Http\DTO\Product\ShowDTO;
-use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Product\SubCategoryResource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * @mixin ShowDTO

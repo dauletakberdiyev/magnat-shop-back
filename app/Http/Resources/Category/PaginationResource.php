@@ -20,7 +20,7 @@ final class PaginationResource extends JsonResource
             'last_page' => $this->lastPage(),
             'next_page_url' => $this->nextPageUrl(),
             'prev_page_url' => $this->previousPageUrl(),
-            'categories' => MainResource::collection($this->getCollection())
+            'categories' => MainResource::collection($this->getCollection()),
         ];
     }
 }

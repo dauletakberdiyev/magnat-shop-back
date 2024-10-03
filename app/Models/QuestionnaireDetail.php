@@ -24,7 +24,9 @@ final class QuestionnaireDetail extends Model
     use LocaleTrait;
 
     protected $table = 'questionnaires_details';
+
     protected $primaryKey = 'id';
+
     public $timestamps = false;
 
     protected $fillable = [
@@ -33,7 +35,7 @@ final class QuestionnaireDetail extends Model
         'title_ru',
         'description_kz',
         'description_ru',
-        'image'
+        'image',
     ];
 
     public function getTitleAttribute(?string $language = null): ?string

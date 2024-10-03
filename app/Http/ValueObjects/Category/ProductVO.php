@@ -22,8 +22,7 @@ final readonly class ProductVO
         public ?string $imageUrl,
         public string $unit,
         public SubCategories $subCategory,
-    ) {
-    }
+    ) {}
 
     public static function fromArray(array $data): self
     {

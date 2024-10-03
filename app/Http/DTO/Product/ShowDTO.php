@@ -14,6 +14,5 @@ final readonly class ShowDTO
         public string $titleRu,
         public Collection $subCategories,
         public ProductCollection $products
-    ) {
-    }
+    ) {}
 }

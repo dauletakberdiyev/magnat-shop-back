@@ -15,14 +15,13 @@ final class AuthController extends Controller
     {
         $dto = $request->getDto();
 
-        if(Auth::attempt(['email' => $dto->email, 'password' => $dto->password]))
-        {
+        if (Auth::attempt(['email' => $dto->email, 'password' => $dto->password])) {
             /** @var User $user */
             $user = Auth::user();
 
             return response()->json([
                 'access_token' => $user->createToken('default')->plainTextToken,
-                'data' => new LoginResource($user)
+                'data' => new LoginResource($user),
             ]);
         }
 

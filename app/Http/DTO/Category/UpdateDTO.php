@@ -8,6 +8,5 @@ final readonly class UpdateDTO
         public string $titleKz,
         public string $titleRu,
         public ?array $subcategories,
-    ) {
-    }
+    ) {}
 }

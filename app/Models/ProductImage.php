@@ -15,12 +15,13 @@ use Illuminate\Database\Eloquent\Model;
 final class ProductImage extends Model
 {
     protected $table = 'products_images';
+
     protected $primaryKey = 'id';
 
     protected $fillable = [
         'product_id',
         'image_url',
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 }

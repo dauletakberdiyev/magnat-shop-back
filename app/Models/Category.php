@@ -20,12 +20,14 @@ final class Category extends Model
     use LocaleTrait;
 
     protected $table = 'categories';
+
     protected $primaryKey = 'id';
+
     public $timestamps = false;
 
     protected $fillable = [
         'title_kz',
-        'title_ru'
+        'title_ru',
     ];
 
     public function getTitleAttribute(?string $language = null): ?string

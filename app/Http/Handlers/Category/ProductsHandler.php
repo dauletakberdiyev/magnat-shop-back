@@ -9,9 +9,9 @@ final readonly class ProductsHandler
 {
     public function handle(): Collection
     {
-         return Category::query()
+        return Category::query()
             ->with([
-                'subCategories.products'
+                'subCategories.products',
             ])
             ->get();
     }

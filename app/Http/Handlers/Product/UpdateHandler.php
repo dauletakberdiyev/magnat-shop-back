@@ -13,12 +13,17 @@ final readonly class UpdateHandler
     {
         return DB::transaction(function () use ($product, $dto) {
             $product->title_kz = $dto->titleKz;
-            if($dto->titleRu) $product->title_ru = $dto->titleRu;
-            if($dto->descriptionKz) $product->description_kz = $dto->descriptionKz;
-            if($dto->descriptionRu) $product->description_ru = $dto->descriptionRu;
+            if ($dto->titleRu) {
+                $product->title_ru = $dto->titleRu;
+            }
+            if ($dto->descriptionKz) {
+                $product->description_kz = $dto->descriptionKz;
+            }
+            if ($dto->descriptionRu) {
+                $product->description_ru = $dto->descriptionRu;
+            }
             $product->real_price = $dto->realPrice;
-            if($dto->discountPercentage)
-            {
+            if ($dto->discountPercentage) {
                 $product->discount_percentage = $dto->discountPercentage;
 
                 $discountPrice = ($product->real_price * (100 - $dto->discountPercentage)) / 100;
@@ -27,8 +32,7 @@ final readonly class UpdateHandler
             $product->sub_category_id = $dto->subCategoryId;
             $product->unit = $dto->unit;
 
-            if($dto->image)
-            {
+            if ($dto->image) {
                 Storage::disk('public')->delete($product->image_url);
 
                 $imagePath = $dto->image->store('images', 'public');

@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources\Category;
 
+use App\Http\Resources\Product\SubCategoryResource;
 use App\Http\ValueObjects\Category\ProductVO;
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\Product\SubCategoryResource;
 
 /**
  * @mixin ProductVO
@@ -23,7 +23,7 @@ final class ProductVOResource extends JsonResource
             'is_exist' => $this->isExist,
             'image_url' => $this->imageUrl,
             'unit' => $this->unit,
-            'subcategory' => new SubCategoryResource($this->subCategory)
+            'subcategory' => new SubCategoryResource($this->subCategory),
         ];
     }
 }

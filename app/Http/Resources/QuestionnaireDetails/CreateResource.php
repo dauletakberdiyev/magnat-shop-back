@@ -19,7 +19,7 @@ final class CreateResource extends JsonResource
             'description_kz' => $this->description_kz,
             'description_ru' => $this->description_ru,
             'image' => $this->image,
-            'questionnaire' => $this->questionnaire
+            'questionnaire' => $this->questionnaire,
         ];
     }
 }

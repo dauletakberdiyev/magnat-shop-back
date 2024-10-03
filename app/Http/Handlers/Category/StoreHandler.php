@@ -15,17 +15,20 @@ final readonly class StoreHandler
             $newCategory = new Category();
 
             $newCategory->title_kz = $titleKz;
-            if($titleRu) $newCategory->title_ru = $titleRu;
+            if ($titleRu) {
+                $newCategory->title_ru = $titleRu;
+            }
 
             $newCategory->save();
 
-            if($subCategories)
-            {
+            if ($subCategories) {
                 foreach ($subCategories as $subCategory) {
                     $newSubCategory = new SubCategories();
 
                     $newSubCategory->title_kz = $subCategory['title_kz'];
-                    if($subCategory['title_ru']) $newSubCategory->title_ru = $subCategory['title_ru'];
+                    if ($subCategory['title_ru']) {
+                        $newSubCategory->title_ru = $subCategory['title_ru'];
+                    }
                     $newSubCategory->category_id = $newCategory->id;
 
                     $imagePath = $subCategory['image']->store('images', 'public');
